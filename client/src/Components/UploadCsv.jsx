@@ -17,12 +17,17 @@ const UploadCsv = () => {
 
   useEffect(() => {
     if (isUploaded) {
-      toast.success(uploadedMessage, {
+      const toastId = toast.success(uploadedMessage, {
         position: "bottom-left",
         autoClose: 2000,
         hideProgressBar: false,
       });
       refetch();
+
+      setTimeout(() => {
+        toast.dismiss(toastId);
+        distpatch(resetUpload());
+      }, 2000);
     }
   }, [isUploaded]);
 

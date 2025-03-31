@@ -36,7 +36,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center bg-gray-300 items-center h-screen">
       <div className="border-2 border-white rounded-sm p-5 md:p-5 w-full m-4 md:w-1/2 bg-[#1e1e2c]">
         {isLoading ? (
           <h1 className="text-2xl text-white text-center p-3">Logging....</h1>

@@ -41,7 +41,7 @@ export const deleteAgent = createAsyncThunk(
     // console.log(id);
     try {
       const response = await api.delete(`/delete-agent/${id}`);
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue({

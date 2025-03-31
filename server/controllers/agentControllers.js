@@ -84,6 +84,13 @@ export const deleteAgent = async (req, res) => {
     const { id } = req.params;
 
     const agent = await agentSchema.findById(id);
+    const findTheirAgentTasks = await taskListSchema.findOne({
+      assignedTo: id,
+    });
+
+    if (findTheirAgentTasks) {
+      await taskListSchema.findOneAndDelete({ assignedTo: id });
+    }
 
     if (!agent) {
       return res.status(404).json({ message: "user not found" });

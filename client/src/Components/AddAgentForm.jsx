@@ -77,6 +77,14 @@ const AddAgentForm = () => {
       password: agent.password,
     };
     dispatch(createAgent(agentData));
+
+    setAgent({
+      name: "",
+      email: "",
+      phone: "",
+      countryCode: "+91",
+      password: "",
+    });
   };
 
   return (

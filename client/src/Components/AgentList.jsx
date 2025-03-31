@@ -39,7 +39,7 @@ const AgentList = ({ onClosePopup }) => {
   return (
     <div className="fixed inset-0 m-auto p-4 md:p-0 top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
       <ToastContainer />
-      <div className="bg-white w-full md:w-[500px] h-[500px] p-4 rounded-lg shadow-md overflow-y-scroll scrollbar-hide">
+      <div className="bg-gray-300 w-full md:w-[500px] h-[500px] p-4 rounded-lg shadow-md overflow-y-scroll scrollbar-hide">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl">AgentList</h1>
           <button

@@ -9,7 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 const DistributedList = () => {
   const dispatch = useDispatch();
-  const { data, isLoading, error } = useFetchAgentTaskListQuery();
+  const { data, isLoading, error, refetch } = useFetchAgentTaskListQuery();
   const [dropDown, setDropDown] = useState(null);
   const { deleteAllTasksState } = useSelector((state) => state.agent);
 
@@ -20,6 +20,7 @@ const DistributedList = () => {
         autoClose: 2000,
       });
 
+      refetch();
       setTimeout(() => {
         toast.dismiss(toastId);
         dispatch(resetDeleteAllTasksState());
@@ -31,10 +32,12 @@ const DistributedList = () => {
     return <div>Loading...</div>;
   }
   if (error) {
-    return <div>Sorry: {error?.data?.message}</div>;
+    if (error.status === 404) {
+      return <div>No tasks assigned to any agent yet.</div>;
+    }
+    return <div>Something went wrong: {error?.data?.message}</div>;
   }
-
-  if (!data?.data?.length > 0) {
+  if (!data?.data?.length) {
     return <div>No Data Found</div>;
   }
 
